@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class LinearEquationRunner {
     public static void main(String[] args){
+
         Scanner input = new Scanner(System.in);
         //Asking for inputs
         System.out.println("Please enter a coordinate point in (x, y) form");
@@ -16,21 +17,18 @@ public class LinearEquationRunner {
         int x2 = Integer.parseInt(secondPoint.substring(1,commaLocation2));
         int y2 = Integer.parseInt(secondPoint.substring(commaLocation2+2, secondPoint.length()-1));
 
-        System.out.println(x1);
-        System.out.println(y1);
-        System.out.println(x2);
-        System.out.println(y2);
-        System.out.println();
-        System.out.println(y2 - y1);
-        System.out.println(x2 - x1);
-        System.out.println();
+        if(x1 == x2){
+            System.out.println("The line is vertical line. The equation is: x = " + x1);
+        }else {
 
-        //creating the class
-        LinearEquation linearEquationRunner = new LinearEquation(x1, y1, x2, y2);
+            //creating the class
+            LinearEquation linearEquationRunner = new LinearEquation(x1, y1, x2, y2);
+            System.out.println(linearEquationRunner.lineInfo());
+            System.out.println();
 
-//        System.out.println(linearEquationRunner.distance());
-//        System.out.println(linearEquationRunner.slope());
-        System.out.println(linearEquationRunner.yIntercept());
-
+            System.out.println("Please enter an x value.");
+            double xValue = input.nextDouble();
+            System.out.println(linearEquationRunner.coordinateForX(xValue));
+        }
     }
 }
